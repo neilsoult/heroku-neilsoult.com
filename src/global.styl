@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i');
+@require './app/shared/layout/global.variables'
+
+html
+body
+    background $white
+    border 0
+    color $text
+    margin 0
+    padding 0
+    sansNormal '16px/1.25'
+    widthHeight 100%
+a
+    &
+    &:active
+    &:hover
+    &:visited
+        color $complement
+        text-decoration none
+button
+    background $primary
+    color $white
+    padding 0 .5em
+    sansSemibold '1em/3'
+    &.secondary
+        background $complement
+.content
+    margin 0 auto
+    min-height 70vh
+    min-width 600px
+.dn
+    display none
+.spinner
+    absolute 0 0 0 0
+    &:after
+        absolute 0 0 0 0
+        background $white
+        border-radius 50%
+        content ''
+        margin auto
+        widthHeight 3em
+    &:before
+        absolute calc(50% - 2em) calc(50% - 2em)
+        animation(spin 1.4s infinite linear)
+        background linear-gradient(to right, $primary 10%, $primary-light 45%)
+        border-radius 50%
+        content ''
+        overflow hidden
+        text-indent -9999px
+        transform translateZ(0)
+        widthHeight 4em
+@keyframes spin
+    0%
+        transform rotate(0)
+    100%
+        transform rotate(360deg)

@@ -1,0 +1,81 @@
+// font mixins
+-font(style, weight, size)
+    if size is a 'unit'
+        font style weight size 'Source Sans Pro', sans-serif
+    else
+        font style weight unquote(size) 'Source Sans Pro', sans-serif
+
+sansNormal(n)
+    -font(normal, 400, n)
+sansNormalItalic(n)
+    -font(italic, 400, n)
+sansSemibold(n)
+    -font(normal, 600, n)
+sansSemiboldItalic(n)
+    -font(italic, 600, n)
+
+boxShadow()
+    box-shadow 0 2px 4px 0 rgba(0, 0, 0, .05)
+
+// vendor mixins
+appearance(value)
+    -webkit-appearance value
+    -moz-appearance value
+    -ms-appearance value
+    -o-appearance value
+    appearance value
+
+transform(value)
+    -webkit-transform value
+    -moz-transform value
+    -ms-transform value
+    transform value
+
+transition(property = all, duration = 500ms, timingFunction = ease-out, delay = 0s)
+    -webkit-transition property duration timingFunction delay
+    -moz-transition property duration timingFunction delay
+    -o-transition property duration timingFunction delay
+    transition property duration timingFunction delay
+
+animation(value)
+    -webkit-animation value
+    -moz-animation value
+    -ms-animation value
+    animation value
+
+// misc mixins
+widthHeight(w, h = w)
+    width w
+    height h
+
+-positions = (top right bottom left)
+
+-pos(pos, args)
+    position unquote(pos)
+    if args is defined
+        for val, i in args
+            {-positions[i]}: val
+
+fixed()
+    -pos('fixed', arguments)
+
+absolute()
+    -pos('absolute', arguments)
+
+static()
+    -pos('static', arguments)
+
+relative()
+    -pos('relative', arguments)
+
+absoluteCenter()
+    position absolute
+    top 50%
+    right 50%
+    transform translate(50%, -50%)
+
+afterClear()
+    &:after
+        content ''
+        clear both
+        display block
