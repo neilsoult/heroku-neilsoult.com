@@ -7,8 +7,8 @@ declare type Links = {
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.styl']
+  templateUrl: './component.html',
+  styleUrls: ['./component.styl']
 })
 export class FooterComponent {
 

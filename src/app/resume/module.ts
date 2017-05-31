@@ -1,22 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { routing } from "./routes";
 import { ResumeComponent } from './component';
-import { FooterComponent } from '../shared/footer/footer.component';
-import { HeaderComponent } from '../shared/header/header.component';
+import { routing } from "./routes";
 
 @NgModule({
     declarations: [
-        ResumeComponent,
-        FooterComponent,
-        HeaderComponent
+        ResumeComponent
     ],
     imports: [
-        BrowserModule,
         CommonModule,
         FormsModule,
         HttpModule,

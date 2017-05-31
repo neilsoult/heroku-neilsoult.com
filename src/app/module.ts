@@ -4,25 +4,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { CardsModule } from './cards/module';
+import { LayoutModule } from './shared/layout/module';
 import { ResumeModule } from './resume/module';
 
-import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { AppComponent } from './component';
+import { routing } from './routes';
 
 @NgModule({
+    bootstrap: [
+        AppComponent
+    ],
     declarations: [
-        AppComponent,
-        FooterComponent,
-        HeaderComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
+        CardsModule,
         CommonModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        LayoutModule,
+        ResumeModule,
+        routing
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: []
 })
 export class AppModule { }
