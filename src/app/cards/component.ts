@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { Deck } from '../models/deck';
+import { Component, OnInit } from '@angular/core';
+import { Deck } from '../../models/deck';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.styl']
+    templateUrl: './component.html',
+    styleUrls: ['./component.styl']
 })
-export class AppComponent {
+export class CardsComponent implements OnInit {
 
-    title: string = 'Résumé';
     deck: Deck;
+    title: string = 'Cards';
 
     constructor () {
 
@@ -20,5 +19,7 @@ export class AppComponent {
         console.log('top card after shuffle: ', this.deck.getCard(0).getName);
 
     }
+
+    ngOnInit () { }
 
 }
