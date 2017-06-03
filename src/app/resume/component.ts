@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderService } from '../shared/header/service';
 
 @Component({
     templateUrl: './component.html',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ResumeComponent {
 
-    title: string = 'Résumé';
+    constructor (headerService: HeaderService) {
+
+        headerService.setTitle('Résumé');
+
+    }
 
 }

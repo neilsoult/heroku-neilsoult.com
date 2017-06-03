@@ -1,25 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { HeaderService } from '../shared/header/service';
+import { Card } from '../../models/card';
 import { Deck } from '../../models/deck';
 
 @Component({
     templateUrl: './component.html',
     styleUrls: ['./component.styl']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent {
 
     deck: Deck;
-    title: string = 'Cards';
+    hands: Array<Array<Card>> = [];
+    handSize: number = 5;
+    numberOfHands: number = 1;
+    showDeck: boolean = false;
 
-    constructor () {
+    constructor (headerService: HeaderService) {
+
+        headerService.setTitle('Cards');
 
         this.deck = new Deck();
-        console.log(this.deck);
-        console.log('top card:', this.deck.getCard(0).getName);
-        this.deck.shuffle();
-        console.log('top card after shuffle: ', this.deck.getCard(0).getName);
+        // console.log('deck constructed: ', this.deck);
 
     }
 
-    ngOnInit () { }
+    dealHands () {
+
+        console.log(`prepare to deal ${this.handSize} cards to ${this.numberOfHands} hands`);
+        let newDeal = this.deck.deal(this.numberOfHands, this.handSize);
+        this.hands = newDeal.hands;
+
+     }
+
+    shuffleDeck () {
+
+        this.deck.shuffleAll();
+        // console.log('deck shuffled: ', this.deck);
+
+    }
 
 }

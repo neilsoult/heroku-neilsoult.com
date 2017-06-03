@@ -1,0 +1,57 @@
+@require '../shared/layout/global.variables'
+
+:host
+    width 100%
+    button input
+        background $primary-light
+        border 0
+        margin .25em
+        padding 0
+        sansNormal '1em/1.5'
+        widthHeight 40px 1.5em
+    ul
+    li
+        list-style none
+        margin 0
+        padding 0
+    ul
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        width 100%
+        li
+            border solid 1px #000
+            border-radius 4px
+            margin .5em 0
+            widthHeight 5em 7em
+    .card
+        text-align center
+        &:after
+            display inline-block
+            widthHeight 1em
+        &.Clubs:after
+            content '♣'
+        &.Diamonds:after
+            content '♦'
+        &.Hearts:after
+            content '♥'
+        &.Spades:after
+            content '♠'
+    .controls
+        display flex
+        flex-wrap wrap
+        margin .5em 0
+        button
+            margin 0 .5em
+            &:first-of-type
+                margin-left 0
+            &:last-of-type
+                margin-right 0
+    .deck.hide
+        &:after
+            @extend :host ul li
+            background blue
+            content ''
+            display block
+        ul
+            display none

@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { HeaderService } from './service';
 
 @Component({
     selector: 'app-header',
@@ -7,8 +10,14 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
 
-    @Input() title: string;
+    title$: Observable<string>;
 
-    constructor() { }
+    constructor (private headerService: HeaderService) {}
+
+    ngOnInit () {
+
+        this.title$ = this.headerService.title$;
+
+    }
 
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { CardsComponent } from './component';
 import { routing } from './routes';
@@ -10,6 +11,7 @@ import { routing } from './routes';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         routing
     ]
 })

@@ -1,18 +1,35 @@
+import errors from './errors';
 import { Card } from './card';
 import { rng } from './rng';
 import { Face, FaceArray, Suit, SuitArray } from './types';
 
 export class Deck {
 
-    private cards: Array<Card> = [];
-    private reOrderCards () {
+    private _cards: Array<Card> = [];
+    private _hands: Array<Array<Card>> = [];
 
-        let shuffler: Array<Card> = this.cards;
-        this.cards = [];
+    private dealOneCardToAllHands () {
+
+        if (this._hands.length && this._cards.length >= this._hands.length) {
+
+            for (let i = 0; i < this._hands.length; i++) {
+
+                this._hands[i].push(this._cards.shift())
+
+            }
+
+        }
+
+    }
+
+    private reOrderAllCards () {
+
+        let shuffler: Array<Card> = [...this._cards].concat(...this._hands);
+        this._cards = this._hands = [];
         while (shuffler.length) {
 
-            let idx = rng(shuffler.length);
-            this.cards.push(shuffler[idx]);
+            let idx = rng(shuffler.length - 1);
+            this._cards.push(shuffler[idx]);
             shuffler.splice(idx, 1);
 
         }
@@ -25,35 +42,81 @@ export class Deck {
 
             FaceArray.forEach((face) => {
 
-                this.cards.push(new Card(face, suit));
+                this._cards.push(new Card(face, suit));
 
             });
 
         });
 
-        console.log('Deck constructed! Card count: ', this.cards.length);
+        // console.log('Deck constructed! Card count: ', this._cards.length);
 
     }
 
-    deal (hands: number, handSize?: number) {}
+    deal (hands: number, handSize?: number) {
 
-    getCard (index: number) {
+        if (hands > this._cards.length || (handSize && (this._hands.length / handSize) > hands)) {
 
-        if (index >= this.cards.length) {
+            throw new Error(errors.badDeal);
 
-            throw new Error('Card index is larger than size of deck!');
+        }
+        this._hands = new Array<Array<Card>>(hands).fill([]);
+        console.log('hands - ', this._hands);
+        if (handSize) {
+
+            while (this._hands[0].length < handSize) {
+
+                this.dealOneCardToAllHands();
+
+            }
+
+        } else {
+
+            while (this._cards.length > this._hands.length) {
+
+                this.dealOneCardToAllHands();
+
+            }
+        }
+        return { hands: this._hands, kitty: this._cards };
+
+    }
+
+    get cards () {
+
+        return this._cards;
+
+    }
+
+    getCard (cardIndex: number, handIndex?: number) {
+
+        if (handIndex != null) {
+
+            if (handIndex >= this._hands.length || cardIndex >= this._hands[handIndex].length) {
+
+                throw new Error(errors.badHandIndex);
+
+            }
+            return this._hands[handIndex][cardIndex];
+
+        } else {
+
+            if (cardIndex >= this._cards.length) {
+
+                throw new Error(errors.badCardIndex);
+
+            }
+
+            return this._cards[cardIndex];
 
         }
 
-        return this.cards[index];
-
     }
 
-    shuffle (times: number = 10) {
+    shuffleAll (times: number = 10) {
 
         for (let i = 0; i < times; i++) {
 
-            this.reOrderCards();
+            this.reOrderAllCards();
 
         }
 

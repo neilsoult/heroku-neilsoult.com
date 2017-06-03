@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FooterComponent } from '../footer/component';
 import { HeaderComponent } from '../header/component';
+import { HeaderService } from '../header/service';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,9 @@ import { HeaderComponent } from '../header/component';
     ],
     imports: [
         CommonModule
+    ],
+    providers: [
+        HeaderService
     ]
 })
 export class LayoutModule { }
