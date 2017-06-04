@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 
-import { HeaderService } from '../shared/header/service';
+import { HeaderService } from '../shared/header/header.service';
 import { Card } from '../../models/card';
 import { Deck } from '../../models/deck';
 
 @Component({
-    templateUrl: './component.html',
-    styleUrls: ['./component.styl']
+    templateUrl: './cards.component.html',
+    styleUrls: ['./cards.component.styl']
 })
 export class CardsComponent {
 
     deck: Deck;
     hands: Array<Array<Card>> = [];
     handSize: number = 5;
-    numberOfHands: number = 1;
+    numberOfHands: number = 2;
     showDeck: boolean = false;
 
     constructor (headerService: HeaderService) {
@@ -36,7 +36,7 @@ export class CardsComponent {
     shuffleDeck () {
 
         this.deck.shuffleAll();
-        // console.log('deck shuffled: ', this.deck);
+        this.hands = [];
 
     }
 

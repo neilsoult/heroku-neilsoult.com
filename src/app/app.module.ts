@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { CardsModule } from './cards/module';
-import { LayoutModule } from './shared/layout/module';
-import { ResumeModule } from './resume/module';
+import { CardsModule } from './cards/cards.module';
+import { LayoutModule } from './shared/layout/layout.module';
+import { ResumeModule } from './resume/resume.module';
 
-import { AppComponent } from './component';
-import { routing } from './routes';
+import { AppComponent } from './app.component';
+import { routing } from './app.routes';
 
 @NgModule({
     bootstrap: [

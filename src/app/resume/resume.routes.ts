@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ResumeComponent } from './component';
+import { ResumeComponent } from './resume.component';
 
 const resumeRoutes: Routes = [
     {

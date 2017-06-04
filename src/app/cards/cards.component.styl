@@ -1,6 +1,7 @@
 @require '../shared/layout/global.variables'
 
 :host
+    display block
     width 100%
     button input
         background $primary-light
@@ -40,18 +41,38 @@
     .controls
         display flex
         flex-wrap wrap
-        margin .5em 0
+        padding .5em 0
         button
             margin 0 .5em
             &:first-of-type
                 margin-left 0
             &:last-of-type
                 margin-right 0
+    .count
+        absolute calc(50% + 2px)
+        color $white
+        text-align center
+        transform translateY(-50%)
+        width 5em
+    .deal dd
+    .deck
+        relative()
+    .deal.hide
+    .deal .show:after
+    .deal dd ul
+    .deck.hide ul
+        display none
+    .deal dd
+        &:after
+            @extend :host ul li
+            background blue
+            content ''
+            display block
+        &.show ul
+            display flex
     .deck.hide
         &:after
             @extend :host ul li
             background blue
             content ''
             display block
-        ul
-            display none

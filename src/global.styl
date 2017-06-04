@@ -24,12 +24,12 @@ button
     color $white
     padding 0 .5em
     sansSemibold '1em/2'
+    &[disabled]
+    &.disabled
+        background $disabled
+        cursor not-allowed
     &.secondary
         background $complement
-.content
-    margin 0 auto
-    min-height 70vh
-    min-width 600px
 .dn
     display none
 .spinner

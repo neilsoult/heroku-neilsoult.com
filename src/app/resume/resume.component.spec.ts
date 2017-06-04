@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { ResumeComponent } from './component';
+import { ResumeComponent } from './resume.component';
 
 describe('AppComponent', () => {
 

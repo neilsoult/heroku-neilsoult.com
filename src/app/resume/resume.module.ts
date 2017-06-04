@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { ResumeComponent } from './component';
-import { routing } from "./routes";
+import { ResumeComponent } from './resume.component';
+import { routing } from "./resume.routes";
 
 @NgModule({
     declarations: [

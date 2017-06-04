@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { HeaderService } from './service';
+import { HeaderService } from './header.service';
 
 @Component({
     selector: 'app-header',
-    templateUrl: './component.html',
-    styleUrls: ['./component.styl']
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.styl']
 })
 export class HeaderComponent {
 

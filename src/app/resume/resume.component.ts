@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderService } from '../shared/header/service';
+import { HeaderService } from '../shared/header/header.service';
 
 @Component({
-    templateUrl: './component.html',
-    styleUrls: ['./component.styl']
+    templateUrl: './resume.component.html',
+    styleUrls: ['./resume.component.styl']
 })
 export class ResumeComponent {
 
