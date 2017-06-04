@@ -1,0 +1,51 @@
+<div class="controls">
+    <button (click)="shuffleDeck()" class="secondary">Shuffle Deck</button>
+    <button (click)="showDeck = !showDeck">
+        {{ showDeck ? 'Hide' : 'Show' }} Deck
+    </button>
+    <button (click)="dealHands()" [disabled]="hands.length">Deal
+        <input
+            [(ngModel)]="numberOfHands"
+            (click)="$event.stopPropagation()"
+            pattern="(^[1-9]{1,}$)"
+            type="tel"
+        />
+        <span>Hands</span>
+        <input
+            [(ngModel)]="handSize"
+            (click)="$event.stopPropagation()"
+            pattern="(^[1-9]{1,}$)"
+            type="tel"
+        />
+        <span>Cards each</span>
+    </button>
+</div>
+<div class="deck" [class.hide]="!showDeck">
+    <ul>
+        <li *ngFor="let card of deck.cards" [ngClass]="['card', card.suit, card.face]">
+            {{ card.face }}
+        </li>
+    </ul>
+    <span class="count">Count: {{ deck.cards.length }}</span>
+</div>
+<div class="deal" [class.hide]="showDeck">
+    <dl *ngFor="let hand of hands; let idx = index;">
+        <dt>
+            Hand #{{ idx + 1 }}
+            <button (click)="hand.visible = !hand.visible">
+                {{ hand.visible ? 'hide' : 'show' }} cards
+            </button>
+        </dt>
+        <dd [class.show]="hand.visible">
+            <ul>
+                <li
+                    *ngFor="let handCard of hand"
+                    [ngClass]="['card', handCard.suit, handCard.face]"
+                >
+                    {{ handCard.face }}
+                </li>
+            </ul>
+            <span class="count">Count: {{ hand.length }}</span>
+        </dd>
+    </dl>
+</div>

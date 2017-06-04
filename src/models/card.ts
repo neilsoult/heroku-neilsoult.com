@@ -1,32 +1,54 @@
 import { Face, Suit } from './types';
 
+const abbr = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K'
+];
+
 export class Card {
 
-    private face: Face;
-    private suit: Suit;
+    private _face: Face;
+    private _suit: Suit;
 
     constructor (face: Face, suit: Suit) {
 
-        this.face = face;
-        this.suit = suit;
+        this._face = face;
+        this._suit = suit;
 
     }
 
-    get getFace () {
+    get abbr () {
 
-        return Face[this.face];
-
-    }
-
-    get getName () {
-
-        return `${Face[this.face]} of ${Suit[this.suit]}`;
+        return abbr[this._face];
 
     }
 
-    get getSuit () {
+    get face () {
 
-        return Suit[this.suit];
+        return Face[this._face];
+
+    }
+
+    get name () {
+
+        return `${Face[this._face]} of ${Suit[this._suit]}`;
+
+    }
+
+    get suit () {
+
+        return Suit[this._suit];
 
     }
 

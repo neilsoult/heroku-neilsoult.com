@@ -11,7 +11,7 @@ let cryptoRandom = () => {
 
 };
 
-export const rng = (max: number, min: number = 0) => {
+export const rng = (max: number, min: number = 0, debug: boolean = false) => {
 
     let factor = (window.crypto && window.crypto.getRandomValues) ?
         cryptoRandom() : mathRandom();

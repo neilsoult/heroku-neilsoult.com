@@ -1,0 +1,78 @@
+@require '../shared/layout/global.variables'
+
+:host
+    display block
+    width 100%
+    button input
+        background $primary-light
+        border 0
+        margin .25em
+        padding 0
+        sansNormal '1em/1.5'
+        widthHeight 40px 1.5em
+    ul
+    li
+        list-style none
+        margin 0
+        padding 0
+    ul
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        width 100%
+        li
+            border solid 1px #000
+            border-radius 4px
+            margin .5em 0
+            widthHeight 5em 7em
+    .card
+        text-align center
+        &:after
+            display inline-block
+            widthHeight 1em
+        &.Clubs:after
+            content '♣'
+        &.Diamonds:after
+            content '♦'
+        &.Hearts:after
+            content '♥'
+        &.Spades:after
+            content '♠'
+    .controls
+        display flex
+        flex-wrap wrap
+        padding .5em 0
+        button
+            margin 0 .5em
+            &:first-of-type
+                margin-left 0
+            &:last-of-type
+                margin-right 0
+    .count
+        absolute calc(50% + 2px)
+        color $white
+        text-align center
+        transform translateY(-50%)
+        width 5em
+    .deal dd
+    .deck
+        relative()
+    .deal.hide
+    .deal .show:after
+    .deal dd ul
+    .deck.hide ul
+        display none
+    .deal dd
+        &:after
+            @extend :host ul li
+            background blue
+            content ''
+            display block
+        &.show ul
+            display flex
+    .deck.hide
+        &:after
+            @extend :host ul li
+            background blue
+            content ''
+            display block

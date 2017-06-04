@@ -1,17 +1,3 @@
-export enum Suit {
-    'Clubs',
-    'Diamonds',
-    'Hearts',
-    'Spades'
-}
-
-export const SuitArray = [
-    Suit.Clubs,
-    Suit.Diamonds,
-    Suit.Hearts,
-    Suit.Spades
-];
-
 export enum Face {
     'Ace',
     'Two',
@@ -43,3 +29,18 @@ export const FaceArray = [
     Face.Queen,
     Face.King
 ];
+
+export enum Suit {
+    'Clubs',
+    'Diamonds',
+    'Hearts',
+    'Spades'
+}
+
+export const SuitArray = [
+    Suit.Clubs,
+    Suit.Diamonds,
+    Suit.Hearts,
+    Suit.Spades
+];
+
