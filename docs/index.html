@@ -1,18 +1,20 @@
-<head><link href="styles.613f6012c43fcf153a35.bundle.css" rel="stylesheet"/></head><!doctype html>
-<base href="/portfolio/">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<script>
-    (function(){
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-            history.replaceState(null, null, redirect);
-        }
-    })();
-</script>
+<!doctype html>
+<head>
+    <base href="/portfolio/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>
+        (function(){
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+<link href="styles.613f6012c43fcf153a35.bundle.css" rel="stylesheet"/></head>
 <app-root>
     <div class="spinner">Loading...</div>
 </app-root>
