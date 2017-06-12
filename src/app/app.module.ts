@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { CardsModule } from './cards/cards.module';
+import { HomeModule } from './home/home.module';
 import { LayoutModule } from './shared/layout/layout.module';
 import { ResumeModule } from './resume/resume.module';
 
@@ -23,6 +24,7 @@ import { routing } from './app.routes';
         CardsModule,
         CommonModule,
         FormsModule,
+        HomeModule,
         HttpModule,
         LayoutModule,
         ResumeModule,
