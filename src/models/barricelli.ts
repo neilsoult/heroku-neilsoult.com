@@ -1,79 +1,42 @@
 import helper from '../util/factory';
 import { rng } from './rng';
 
-const genes = {
-    0: '#0066CC', // rgb(0,102,204)
-    1: '#99CCCC', // rgb(153,204,204)
-    2: '#99FFFF', // rgb(153,255,255)
-    3: '#33FF99', // rgb(51,255,153)
-    4: '#00CC66', // rgb(0,204,102)
-    5: '#009933', // rgb(0,153,51)
-    6: '#33FF66', // rgb(51,255,102)
-    7: '#00FF33', // rgb(0,255,51)
-    8: '#CC00CC', // rgb(204,0,204)
-    9: '#9900CC', // rgb(153,0,204)
-    10: '#330066', // rgb(51,0,102)
-    11: '#663399', // rgb(102,51,153)
-    12: '#FFCC00', // rgb(255,204,0)
-    13: '#FFCC33', // rgb(255,204,51)
-    14: '#CCCCFF', // rgb(204,204,255)
-    15: '#99CCFF', // rgb(153,204,255)
-    16: '#3399FF', // rgb(51,153,255)
-    17: '#CCFFFF', // rgb(204,255,255)
-    18: '#000000', // rgb(0,0,0)
-    19: '#336633', // rgb(51,102,51)
-    20: '#009900', // rgb(0,153,0)
-    21: '#339933', // rgb(51,153,51)
-    22: '#669966', // rgb(102,153,102)
-    23: '#99CC99', // rgb(153,204,153)
-    24: '#FFCCFF', // rgb(255,204,255)
-    25: '#FF99FF', // rgb(255,153,255)
-    26: '#FF66FF', // rgb(255,102,255)
-    27: '#FF3300', // rgb(255,51,0)
-    28: '#FF9900', // rgb(255,153,0)
-    29: '#FF6600', // rgb(255,102,0)
-    30: '#CC6699', // rgb(204,102,153)
-    31: '#003300', // rgb(0,51,0)
-    32: '#00CC33', // rgb(0,204,51)
-    33: '#006633', // rgb(0,102,51)
-    34: '#339966', // rgb(51,153,102)
-    35: '#66CC99', // rgb(102,204,153)
-    36: '#99FFCC', // rgb(153,255,204)
-};
-
-// based on http://cultureandcommunication.org/galloway/Barricelli/Barricelli.pde
+// based on http://cultureandcommunication.org/galloway/Barricelli/
 export default class {
 
-    private MAX_GENE: number = 37;
-    private MIN_GENE: number = 0;
+    private MAX_GENE: number = 18;
+    private MAX_REPRODUCTIONS: number = 2;
+    private MIN_GENE: number = -18;
 
     private cells: Array<Array<number>>;
-    private drawCellHeight: number = 9;
-    private drawCellWidth: number = 2;
-    private generations: number = 32;
+    // private drawCellHeight: number;
+    // private drawCellWidth: number;
+    private generations: number;
     private seed: number = 512;
-    private universe: number = this.seed - 1;
+    private universe: number;
+
+    // debug
+    // aNormTracker: number = 0;
+    // bNormTracker: number = 0;
+    // shiftNormTracker: number = 0;
+    // zeroNormTracker: number = 0;
+    // zeroTracker: number = 0;
 
     constructor () {
 
-        this.drawCellHeight = 1;
-        this.drawCellWidth = 1;
-        this.generations *= 16;
-        this.seed = 512;
+        // this.drawCellHeight = 1;
+        // this.drawCellWidth = 1;
+        this.generations = this.seed;
         this.universe = this.seed - 1;
 
-        // size() - define the viewing area
-
-        this.cells = helper.createMultiArray(this.universe, this.generations - 1);
-
-        // noStroke() - no stroke outline drawn; irrelevant
-
-        // frameRate(20) - we should 'draw' 20 times per second
+        this.cells = helper.createMultiArray(this.universe, this.generations);
 
     }
 
     aNorm (a: number, g: number) {
 
+        // console.log('aNorm');
+        // this.aNormTracker++;
         this.baseNorm(a, g, (a: number, g: number, u: number, v: number) => {
 
             let sum: number = this.getLeftDistance(a, g) + this.getRightDistance(a, g);
@@ -102,6 +65,8 @@ export default class {
 
     bNorm (a: number, g: number) {
 
+        // console.log('bNorm');
+        // this.bNormTracker++;
         this.baseNorm(a, g, (a: number, g: number, u: number, v: number) => {
 
             let sum: number = this.getLeftDistance(a, g) + this.getRightDistance(a, g) - 1;
@@ -139,44 +104,35 @@ export default class {
 
     }
 
-    drawCells (ctx: CanvasRenderingContext2D) {
-
-        // background(255) - set background to white
-        // loop through cells, draw each cell
-        for (let i = 0; i < this.cells.length; i++) {
-
-            for (let j = 0; j < this.cells[i].length; j++) {
-
-                // ctx.beginPath();
-                ctx.fillStyle = genes[this.cells[i][j]];
-                ctx.fillRect(i, j, 1, 1);
-
-            }
-
-        }
-
-    }
-
-    drawOnce (ctx: CanvasRenderingContext2D) {
+    drawOnce (callback: Function) {
 
         this.initCells();
         this.evolve();
-        this.drawCells(ctx);
+        callback(this.cells);
 
     }
 
     evolve () {
 
-        for (let i = 0; i < this.cells.length - 1; i++) {
+        // console.group();
 
-            for (let j = 0; j < this.cells[i].length; j++) {
+        for (let i = 0; i < this.generations - 1; i++) {
 
-                let x = this.cells[i][j];
-                this.shift(x, i, j, x, 0);
+            for (let j = 0; j < this.universe; j++) {
+
+                let x = this.cells[j][i];
+                this.shift(x, j, i, x, 0);
 
             }
 
         }
+
+        // console.log('aNormTracker: ', this.aNormTracker);
+        // console.log('bNormTracker: ', this.bNormTracker);
+        // console.log('shiftNormTracker: ', this.shiftNormTracker);
+        // console.log('zeroNormTracker: ', this.zeroNormTracker);
+        // console.log('zeroTracker: ', this.zeroTracker);
+        // console.groupEnd();
 
     }
 
@@ -237,6 +193,7 @@ export default class {
 
     initCells () {
 
+        // console.group();
         for (let i = 0; i < this.cells.length; i++) {
 
             for (let j = 0; j < this.cells[i].length; j++) {
@@ -246,6 +203,7 @@ export default class {
             }
 
         }
+        // console.groupEnd();
 
     }
 
@@ -263,7 +221,9 @@ export default class {
 
     randomGene (): number {
 
-        return rng(this.MAX_GENE, this.MIN_GENE);
+        let random = rng(this.MAX_GENE, this.MIN_GENE);
+        // console.log('random:', random);
+        return random;
 
     }
 
@@ -271,6 +231,8 @@ export default class {
 
         if (x === 0) {
 
+            // console.log('x is 0');
+            // this.zeroTracker++;
             return;
 
         }
@@ -279,7 +241,7 @@ export default class {
         let nG = xG + 1; // next generation
         let n = this.getCellValue(nA, nG);
 
-        //shift - collision
+        // shift - collision
         if (n !== 0 && x !== n) {
 
             let multiplier = 2;
@@ -289,8 +251,7 @@ export default class {
 
                 this.bNorm(nA, nG);
 
-            }
-            else {
+            } else {
 
                 this.aNorm(nA, nG);
 
@@ -303,10 +264,21 @@ export default class {
 
         }
 
+        // reproduce
+        reproductions++;
+        let y = this.getCellValue(xA + deltaA, xG);
+        if (y !== 0 && reproductions <= this.MAX_REPRODUCTIONS) {
+
+            this.shift(x, xA, xG, y, reproductions);
+
+        }
+
     }
 
     shiftNorm (gene: number, a: number, g: number) {
 
+        // console.log('shiftNorm');
+        // this.shiftNormTracker++;
         this.cells[this.wrapToUniverse(a)][g] = gene;
 
     }
@@ -333,6 +305,8 @@ export default class {
 
     zeroNorm (a: number, g: number) {
 
+        // console.log('zeroNorm');
+        // this.zeroNormTracker++;
         this.cells[a][g] = 0;
 
     }
