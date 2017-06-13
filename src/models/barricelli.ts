@@ -247,7 +247,7 @@ export default class {
             let multiplier = 2;
 
             // see page 155 of 1957 paper(?)
-            if ((nA <= 63 * multiplier) || (nA <= 255 * multiplier)) {
+            if (nA <= 255 * multiplier) {
 
                 this.bNorm(nA, nG);
 
