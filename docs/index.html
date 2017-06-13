@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+    <base href="/portfolio/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>
+        (function(){
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+<link href="styles.613f6012c43fcf153a35.bundle.css" rel="stylesheet"/></head>
+<app-root>
+    <div class="spinner">Loading...</div>
+</app-root>
+<script type="text/javascript" src="inline.55d5a01283bb053263bd.bundle.js"></script><script type="text/javascript" src="polyfills.a3e056f914d9748ff431.bundle.js"></script><script type="text/javascript" src="vendor.14ae05f81456c109cc77.bundle.js"></script><script type="text/javascript" src="main.b340fbb9f9e567f81f32.bundle.js"></script>
