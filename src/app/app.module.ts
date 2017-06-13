@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { CardsModule } from './cards/cards.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './shared/layout/layout.module';
+import { LifeModule } from "./life/life.module";
 import { ResumeModule } from './resume/resume.module';
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { routing } from './app.routes';
         HomeModule,
         HttpModule,
         LayoutModule,
+        LifeModule,
         ResumeModule,
         routing
     ],

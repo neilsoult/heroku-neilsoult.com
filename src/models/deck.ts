@@ -1,4 +1,5 @@
 import errors from './errors';
+import helper from '../util/factory'; // TODO: replace array creation with createMultiArray
 import { Card } from './card';
 import { rng } from './rng';
 import { Face, FaceArray, Suit, SuitArray } from './types';
@@ -6,7 +7,7 @@ import { Face, FaceArray, Suit, SuitArray } from './types';
 export class Deck {
 
     private _cards: Array<Card> = [];
-    private _hands: Array<Array<Card>> = [[]];
+    private _hands: Array<Array<Card>> = helper.createMultiArray(1, 1);
 
     private dealOneCardToAllHands () {
 
