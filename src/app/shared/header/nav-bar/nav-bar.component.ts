@@ -17,6 +17,10 @@ export class NavBarComponent {
             text: 'Résumé'
         },
         {
+            route: '/life',
+            text: 'Life'
+        },
+        {
             route: '/cards',
             text: 'Cards'
         }

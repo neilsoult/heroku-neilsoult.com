@@ -14,6 +14,7 @@ export class XkcdStripComponent {
 
     constructor (private xkcdStripService: XkcdStripService) {
 
+        xkcdStripService.test();
         this.hoverText = xkcdStripService.hoverText;
         this.imgSrc = xkcdStripService.imgSrc;
         this.title = xkcdStripService.title;
