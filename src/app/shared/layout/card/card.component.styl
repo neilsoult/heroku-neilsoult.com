@@ -1,0 +1,15 @@
+@require '../global.variables'
+
+:host
+    text-align center
+    &:after
+        display inline-block
+        widthHeight 1em
+    &.Clubs:after
+        content '♣'
+    &.Diamonds:after
+        content '♦'
+    &.Hearts:after
+        content '♥'
+    &.Spades:after
+        content '♠'

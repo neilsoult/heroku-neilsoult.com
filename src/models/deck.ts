@@ -7,7 +7,7 @@ import { Face, FaceArray, Suit, SuitArray } from './types';
 export class Deck {
 
     private _cards: Array<Card> = [];
-    private _hands: Array<Array<Card>> = helper.createMultiArray(1, 1);
+    private _hands: Array<Array<Card>> = helper.createMultiArray(0, 0);
 
     private dealOneCardToAllHands () {
 
@@ -67,10 +67,11 @@ export class Deck {
 
     deal (hands: number, handSize?: number) {
 
-        console.log('deal');
-        if (hands > this._hands.length) {
+        console.log('deal', hands, this._hands.length);
+        if (hands !== this._hands.length) {
 
-            this._hands[hands - 1] = [];
+            // this._hands[hands - 1] = [];
+            this._hands = helper.createMultiArray(hands, 0);
 
         }
 

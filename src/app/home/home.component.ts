@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderService } from '../shared/header/header.service';
+import { HomeService, TileDef } from './home.service';
 
 @Component({
     selector: 'app-home',
@@ -8,9 +9,12 @@ import { HeaderService } from '../shared/header/header.service';
 })
 export class HomeComponent {
 
-    constructor (private headerService: HeaderService) {
+    tiles: Array<TileDef>;
+
+    constructor (private headerService: HeaderService, private homeService: HomeService) {
 
         headerService.setTitle('Welcome');
+        this.tiles = homeService.tiles;
 
     }
 

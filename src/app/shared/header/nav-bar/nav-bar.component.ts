@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+export type LinkDef = {
+    route: string;
+    text: string;
+};
+
 @Component({
     selector: 'nav-bar',
     templateUrl: './nav-bar.component.html',
@@ -7,7 +12,7 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
 
-    links: Array<Object> = [
+    links: Array<LinkDef> = [
         {
             route: '/home',
             text: 'Home'

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { BlackjackModule } from './blackjack/blackjack.module';
 import { CardsModule } from './cards/cards.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './shared/layout/layout.module';
@@ -21,6 +22,7 @@ import { routing } from './app.routes';
         AppComponent
     ],
     imports: [
+        BlackjackModule,
         BrowserModule,
         CardsModule,
         CommonModule,
