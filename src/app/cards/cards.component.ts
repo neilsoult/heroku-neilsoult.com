@@ -27,9 +27,9 @@ export class CardsComponent {
 
     dealHands () {
 
-        console.log(`prepare to deal ${this.handSize} cards to ${this.numberOfHands} hands`);
-        let newDeal = this.deck.deal(this.numberOfHands, this.handSize);
-        this.hands = newDeal.hands;
+        // console.log(`prepare to deal ${this.handSize} cards to ${this.numberOfHands} hands`);
+        this.deck.deal(this.numberOfHands, this.handSize);
+        this.hands = this.deck.hands;
 
      }
 
