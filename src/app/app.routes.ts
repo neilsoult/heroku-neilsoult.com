@@ -5,7 +5,7 @@ const appRoutes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'homegi'
+        redirectTo: 'home'
     }
 ];
 

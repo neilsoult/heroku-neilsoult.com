@@ -2,7 +2,7 @@
 <ul>
     <li *ngFor="let tile of tiles" class="tile">
         <a [routerLink]="tile.route">
-            <img [src]="'/assets/' + tile.img" [alt]="tile.text" />
+            <img [src]="environment.assetPath + tile.img" [alt]="tile.text" />
             <span>{{ tile.text }}</span>
         </a>
     </li>
