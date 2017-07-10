@@ -22,7 +22,7 @@
 </div>
 <div class="deck" [class.hide]="!showDeck">
     <ul>
-        <li *ngFor="let card of deck.cards" [ngClass]="['card', card.suit, card.face]">
+        <li *ngFor="let card of deck.cards" [ngClass]="[card.suit, card.face]" card>
             {{ card.face }}
         </li>
     </ul>
@@ -40,7 +40,8 @@
             <ul>
                 <li
                     *ngFor="let handCard of hand"
-                    [ngClass]="['card', handCard.suit, handCard.face]"
+                    [ngClass]="[handCard.suit, handCard.face]"
+                    card
                 >
                     {{ handCard.face }}
                 </li>

@@ -1,0 +1,9 @@
+<h1>Home</h1>
+<ul>
+    <li *ngFor="let tile of tiles" class="tile">
+        <a [routerLink]="tile.route">
+            <img [src]="'/assets/' + tile.img" [alt]="tile.text" />
+            <span>{{ tile.text }}</span>
+        </a>
+    </li>
+</ul>

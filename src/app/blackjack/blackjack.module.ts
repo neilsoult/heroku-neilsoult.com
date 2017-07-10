@@ -1,21 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { LayoutModule } from '../shared/layout/layout.module';
-import { CardsComponent } from './cards.component';
-
-import { routing } from './cards.routes';
+import { BlackjackComponent } from './blackjack.component';
+import { routing } from './blackjack.routes';
 
 @NgModule({
     declarations: [
-        CardsComponent
+        BlackjackComponent
     ],
     imports: [
         CommonModule,
-        FormsModule,
         LayoutModule,
         routing
     ]
 })
-export class CardsModule { }
+export class BlackjackModule { }

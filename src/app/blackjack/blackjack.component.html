@@ -1,0 +1,38 @@
+<div class="controls">
+    <button (click)="deal(1)">Deal</button>
+</div>
+<div class="deck"></div>
+<div class="dealer">
+    <dl>
+        <dt>Dealer's Hand</dt>
+        <dd>
+            <ul>
+                <li
+                    *ngFor="let handCard of dealer"
+                    [ngClass]="[handCard.suit, handCard.face]"
+                    card
+                >
+                    {{ handCard.face }}
+                </li>
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div class="player">
+    <dl *ngFor="let hand of hands; let idx = index;">
+        <dt>
+            Hand #{{ idx + 1 }}
+        </dt>
+        <dd>
+            <ul>
+                <li
+                    *ngFor="let handCard of hand"
+                    [ngClass]="[handCard.suit, handCard.face]"
+                    card
+                >
+                    {{ handCard.face }}
+                </li>
+            </ul>
+        </dd>
+    </dl>
+</div>
