@@ -23,7 +23,7 @@ export class FooterComponent {
         },
         {
             text: 'view source',
-            uri: 'https://github.com/neilsoult/portfolio'
+            uri: 'https://github.com/neilsoult/heroku-neilsoult.com'
         },
         {
             text: 'LinkedIn',

@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { LayoutModule } from './shared/layout/layout.module';
 import { LifeModule } from "./life/life.module";
 import { ResumeModule } from './resume/resume.module';
+import { XkcdModule } from './xkcd/xkcd.module';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routes';
@@ -32,7 +33,8 @@ import { routing } from './app.routes';
         LayoutModule,
         LifeModule,
         ResumeModule,
-        routing
+        routing,
+        XkcdModule
     ],
     providers: []
 })
