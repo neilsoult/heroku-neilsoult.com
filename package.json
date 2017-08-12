@@ -7,9 +7,8 @@
     "url": "git+https://github.com/neilsoult/heroku-neilsoult.com.git"
   },
   "scripts": {
-    "postinstall": "tsc -p src/api",
+    "postinstall": "tsc -p src/api;ng build --aot -prod",
     "preinstall": "rimraf dist",
-    "prestart": "ng build --aot -prod",
     "start": "nf start",
     "ng": "ng",
     "dev": "ng serve",
