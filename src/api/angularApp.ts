@@ -14,7 +14,7 @@ const angularApp: any = {
 
             }
 
-            // console.log('routing index file', `${__dirname}/app/index.html`);
+            console.log('routing index file', `${__dirname}/app/index.html`);
             server.route({
                 config: {
                     handler: { file: `${__dirname}/app/index.html` }
@@ -31,7 +31,7 @@ const angularApp: any = {
                 paths.map((path) => {
 
                     path = path.split('dist/app')[1];
-                    // console.log('mapping: ', `${__dirname}/app${path} to ${path}`);
+                    console.log('mapping: ', `${__dirname}/app${path} to ${path}`);
                     server.route({
                         config: {
                             handler: { file: `${__dirname}/app${path}` }
