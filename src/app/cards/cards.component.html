@@ -1,8 +1,4 @@
 <div class="controls">
-    <button (click)="shuffleDeck()" class="secondary">Shuffle Deck</button>
-    <button (click)="showDeck = !showDeck">
-        {{ showDeck ? 'Hide' : 'Show' }} Deck
-    </button>
     <button (click)="dealHands()" [disabled]="hands.length">Deal
         <input
             [(ngModel)]="numberOfHands"
@@ -19,6 +15,10 @@
         />
         <span>Cards each</span>
     </button>
+    <button (click)="showDeck = !showDeck">
+        {{ showDeck ? 'Hide' : 'Show' }} Deck
+    </button>
+    <button (click)="shuffleDeck()">Shuffle</button>
 </div>
 <div class="deck" [class.hide]="!showDeck">
     <ul>

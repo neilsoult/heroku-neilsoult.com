@@ -1,3 +1,5 @@
-<h2 *ngIf="props">{{ props.text }}</h2>
-<img *ngIf="props" [alt]="props.text" [src]="props.imgSrc" [title]="props.hoverText" />
-<!--<button>Get Another</button>-->
+<div *ngIf="props">
+    <h1>{{ props.text }}</h1>
+    <img [alt]="props.text" [src]="props.imgSrc" [title]="props.hoverText" />
+    <h4 [innerHTML]="props.hoverText"></h4>
+</div>

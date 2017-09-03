@@ -10,6 +10,6 @@ export class XkcdStripComponent {
 
     @Input('properties') props: XkcdStripProperties;
 
-    constructor () { }
+    constructor () {}
 
 }

@@ -22,6 +22,10 @@ export class NavBarComponent {
             text: 'Résumé'
         },
         {
+            route: '/xkcd',
+            text: 'xkcd'
+        },
+        {
             route: '/life',
             text: 'Life'
         },
