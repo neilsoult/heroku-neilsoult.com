@@ -21,8 +21,13 @@ export class HomeService {
             },
             {
                 img: 'life.png',
+                route: '/xkcd',
+                text: 'xkcd'
+            },
+            {
+                img: 'life.png',
                 route: '/life',
-                text: 'life'
+                text: 'artificial life'
             },
             {
                 img: 'cards.png',

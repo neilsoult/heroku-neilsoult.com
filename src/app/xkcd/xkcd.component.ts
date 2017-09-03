@@ -19,9 +19,15 @@ export class XkcdComponent implements OnInit {
 
     }
 
-    ngOnInit () {
+    loadRandom () {
 
         this.stripData$ = this.xkcdService.getRandomStrip();
+
+    }
+
+    ngOnInit () {
+
+        this.loadRandom();
 
     }
 

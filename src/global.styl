@@ -3,7 +3,7 @@
 
 html
 body
-    background $white
+    background $body
     border 0
     color $text
     margin 0
@@ -37,7 +37,7 @@ button
     text-indent -9999px
     &:after
         absolute 0 0 0 0
-        background $white
+        background $body
         border-radius 50%
         content ''
         margin auto
@@ -45,7 +45,7 @@ button
     &:before
         absolute calc(50% - 2em) calc(50% - 2em)
         animation(spin 1.4s infinite linear)
-        background linear-gradient(to right, $primary 10%, $primary-light 45%)
+        background linear-gradient(to right, $primary 10%, $primary-lightest 45%)
         border-radius 50%
         content ''
         overflow hidden
